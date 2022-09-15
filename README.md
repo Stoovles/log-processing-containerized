@@ -1,5 +1,6 @@
 # Pre Requisites
-[Docker Desktop](https://www.docker.com/products/docker-desktop/)\n
+[Docker Desktop](https://www.docker.com/products/docker-desktop/)
+
 [Docker Compose](https://docs.docker.com/compose/install/)
 
 # Summary
