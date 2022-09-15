@@ -11,7 +11,7 @@ services:
      - DD_LOGS_ENABLED=true
      - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
      - DD_LOGS_CONFIG_DOCKER_CONTAINER_USE_FILE=true
-     - DD_LOGS_CONFIG_PROCESSING_RULES=[{"type":"mask_sequences","name":"mask_auth_token","replace_placeholder":"auth_token = [VALUE_REDACTED]","pattern":"\\x60auth_token\\x60\\s=\\s[^\\s]+"}]
+     # - DD_LOGS_CONFIG_PROCESSING_RULES=[{"type":"mask_sequences","name":"mask_auth_token","replace_placeholder":"auth_token = [VALUE_REDACTED]","pattern":"\\x60auth_token\\x60\\s=\\s[^\\s]+"}]
      - DD_CONTAINER_EXCLUDE=name:docker-compose-example_datadog
     volumes:
      - /var/run/docker.sock:/var/run/docker.sock
