@@ -1,0 +1,34 @@
+version: "3"
+services:
+  datadog:
+    build: datadog
+    pid: host
+    links:
+      - logger
+    environment:
+     - DD_API_KEY=<__your_datadog_api_key_here__>
+     - DD_SITE=datadoghq.com
+     - DD_LOGS_ENABLED=true
+     - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
+     - DD_LOGS_CONFIG_DOCKER_CONTAINER_USE_FILE=true
+     - DD_LOGS_CONFIG_PROCESSING_RULES=[{"type":"mask_sequences","name":"mask_auth_token","replace_placeholder":"auth_token = [VALUE_REDACTED]","pattern":"\\x60auth_token\\x60\\s=\\s[^\\s]+"}]
+     - DD_CONTAINER_EXCLUDE=name:docker-compose-example_datadog
+    volumes:
+     - /var/run/docker.sock:/var/run/docker.sock
+     - /proc/:/host/proc/:ro
+     - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
+     - /var/lib/docker/containers:/var/lib/docker/containers:ro
+  logger:
+     build: logger
+     # labels:
+     #   com.datadoghq.ad.logs: >-
+     #     [{
+     #       "source": "irl",
+     #       "service": "irl",
+     #       "log_processing_rules": [{
+     #         "type": "mask_sequences",
+     #         "name": "exclude_auth_token_logs",
+     #         "replace_placeholder": "auth_token = [VALUE REDACTED]",
+     #         "pattern" : "\\x60auth_token\\x60 =\\s[^\\s]+"
+     #       }]
+     #     }]
