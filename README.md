@@ -4,7 +4,7 @@
 [Docker Compose](https://docs.docker.com/compose/install/)
 
 # Summary
-The goal of this repo is to provide an easy to spin-up environment which provides the ability to test containerized log processing rules. Often times customer's will reach out requesting a log processing rule which does XYZ. Too frequently will TSE's provide the customer with an untested rule which will sometimes work sometimes not. The hope is that TSE's will be able to quickly test a containerized log processing rule prior to providing it to the customer.
+The goal of this repo is to provide an easy to spin-up environment which provides the ability to test containerized log processing rules. Often times customer's will reach out requesting a log processing rule which does XYZ. Too frequently TSE's will provide the customer with an untested rule which will sometimes work sometimes not. The hope is that TSE's will be able to quickly test a containerized log processing rule prior to providing it to the customer.
 
 This repo is comprised of a Datadog Agent image and a logger image. The logger image is meant to generate logs to be tailed by the Datadog Agent and consequently end up in your Datadog sandbox account. Depending on how the customer is applying log processing rules you will either be applying them to the logger image via docker labels OR via environment variables on the Datadog Agent.
 
